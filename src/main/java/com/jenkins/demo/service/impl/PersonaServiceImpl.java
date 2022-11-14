@@ -15,15 +15,22 @@ public class PersonaServiceImpl implements PersonaService{
 
 	@Autowired
 	private PersonaMapper mapper;
-	
+
 	@Autowired
 	private PersonaRepository repository;
+
 	
+	/**
+	 *
+	 */
 	@Override
 	public void guardarPersona(PersonaDTO personaDto) {
 		repository.save(mapper.personaDTOToPersona(personaDto));
 	}
 
+	/**
+	 *
+	 */
 	@Override
 	public List<PersonaDTO> obtenerPersonas() {
 		return mapper.listaPersonaToListaPersonaDTO(repository.findAll());

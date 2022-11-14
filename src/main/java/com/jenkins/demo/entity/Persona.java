@@ -32,17 +32,27 @@ public class Persona {
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date fechaNacimiento;
 
+	/**
+	 * 
+	 */
 	public Persona() {
 		super();
 	}
 
+	/**
+	 * @param id
+	 * @param nombre
+	 * @param apellido
+	 * @param edad
+	 * @param fechaNacimiento
+	 */
 	public Persona(Long id, String nombre, String apellido, Integer edad, Date fechaNacimiento) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.edad = edad;
-		this.fechaNacimiento = fechaNacimiento;
+		this.fechaNacimiento = new Date(fechaNacimiento.getTime());
 	}
 
 	public Long getId() {
@@ -78,11 +88,10 @@ public class Persona {
 	}
 
 	public Date getFechaNacimiento() {
-		return fechaNacimiento;
+		return fechaNacimiento != null ? fechaNacimiento : new Date(fechaNacimiento.getTime());
 	}
 
 	public void setFechaNacimiento(Date fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
+		this.fechaNacimiento = new Date(fechaNacimiento.getTime());
 	}
-
 }

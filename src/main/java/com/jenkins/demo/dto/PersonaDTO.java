@@ -9,17 +9,27 @@ public class PersonaDTO {
 	private Integer edad;
 	private Date fechaNacimiento;
 
+	/**
+	 * 
+	 */
 	public PersonaDTO() {
 		super();
 	}
 
+	/**
+	 * @param id
+	 * @param nombre
+	 * @param apellido
+	 * @param edad
+	 * @param fechaNacimiento
+	 */
 	public PersonaDTO(Long id, String nombre, String apellido, Integer edad, Date fechaNacimiento) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.edad = edad;
-		this.fechaNacimiento = fechaNacimiento;
+		this.fechaNacimiento = new Date(fechaNacimiento.getTime());
 	}
 	public Long getId() {
 		return id;
@@ -46,9 +56,9 @@ public class PersonaDTO {
 		this.edad = edad;
 	}
 	public Date getFechaNacimiento() {
-		return fechaNacimiento;
+		return fechaNacimiento != null ? fechaNacimiento : new Date(fechaNacimiento.getTime());
 	}
 	public void setFechaNacimiento(Date fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
-	}	
+		this.fechaNacimiento = new Date(fechaNacimiento.getTime());
+	}
 }
